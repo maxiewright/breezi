@@ -1,0 +1,15 @@
+chore(init): bootstrap Laravel 12 + Livewire starter kit with tooling
+
+- Scaffold Laravel 12 application structure and defaults
+- Add Livewire 3 with Volt v1 and Flux UI Free v2
+- Configure Tailwind CSS v4 with Vite v7 and laravel-vite-plugin
+- Set up testing with Pest v3 and Livewire/Pest plugins
+- Add static analysis and refactoring: Larastan v3 (PHPStan) and Rector v2
+- Add code style via Laravel Pint v1
+- Improve DX: Laravel Boost, Pail, and Sail
+- Provide composer scripts for dev, tests, Rector, Pint, and coverage
+- Initialize SQLite database and run migrations in post-create project script
+
+Notes:
+- No breaking changes; this is the initial project scaffold
+- Generated on 2025-08-17 12:27 local time
