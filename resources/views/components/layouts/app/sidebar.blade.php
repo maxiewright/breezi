@@ -14,18 +14,17 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    <flux:navlist.item icon="users" :href="route('customers.list')" :current="request()->routeIs('customers.*')" wire:navigate>{{ __('Customers') }}</flux:navlist.item>
+                    <flux:navlist.item icon="clipboard-document-list" :href="route('tasks.list')" :current="request()->routeIs('tasks.*')" wire:navigate>{{ __('Tasks') }}</flux:navlist.item>
+        
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />
 
             <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
-
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                {{ __('Documentation') }}
+                <flux:navlist.item icon="cog-6-tooth" :href="route('settings.profile')" wire:navigate>
+                {{ __('Settings') }}
                 </flux:navlist.item>
             </flux:navlist>
 
@@ -126,6 +125,38 @@
         </flux:header>
 
         {{ $slot }}
+
+        <!-- Mobile Bottom Navigation -->
+        <div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
+            <div class="bg-white border-t border-gray-200 dark:bg-zinc-800 dark:border-zinc-700">
+                <div class="flex justify-around">
+                    <a href="{{ route('dashboard') }}" class="flex flex-col items-center py-3 px-4 {{ request()->routeIs('dashboard') ? 'text-blue-600' : 'text-gray-500 dark:text-gray-400' }}" wire:navigate>
+                        <flux:icon name="home" class="h-6 w-6 mb-1" />
+                        <span class="text-xs">Dashboard</span>
+                    </a>
+                    <a href="{{ route('customers.list') }}" class="flex flex-col items-center py-3 px-4 {{ request()->routeIs('customers.*') ? 'text-blue-600' : 'text-gray-500 dark:text-gray-400' }}" wire:navigate>
+                        <flux:icon name="users" class="h-6 w-6 mb-1" />
+                        <span class="text-xs">Customers</span>
+                    </a>
+                    <a href="{{ route('tasks.list') }}" class="flex flex-col items-center py-3 px-4 {{ request()->routeIs('tasks.*') ? 'text-blue-600' : 'text-gray-500 dark:text-gray-400' }}" wire:navigate>
+                        <flux:icon name="clipboard-document-list" class="h-6 w-6 mb-1" />
+                        <span class="text-xs">Tasks</span>
+                    </a>
+                    <a href="{{ route('tasks.calendar') }}" class="flex flex-col items-center py-3 px-4 {{ request()->routeIs('tasks.calendar') ? 'text-blue-600' : 'text-gray-500 dark:text-gray-400' }}" wire:navigate>
+                        <flux:icon name="calendar" class="h-6 w-6 mb-1" />
+                        <span class="text-xs">Calendar</span>
+                    </a>
+                    <a href="{{ route('tasks.create') }}" class="flex flex-col items-center py-3 px-4 text-gray-500 dark:text-gray-400" wire:navigate>
+                        <flux:icon name="plus-circle" class="h-6 w-6 mb-1" />
+                        <span class="text-xs">New Task</span>
+                    </a>
+                    <a href="{{ route('customers.create') }}" class="flex flex-col items-center py-3 px-4 text-gray-500 dark:text-gray-400" wire:navigate>
+                        <flux:icon name="user-plus" class="h-6 w-6 mb-1" />
+                        <span class="text-xs">Add Customer</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         @fluxScripts
     </body>

@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
-use App\Models\DutyExemption;
-use App\Models\ExternalContact;
-use App\Models\ServiceData\Unit;
-use App\Models\Serviceperson;
+use App\Models\Asset;
+use App\Models\Customer;
+use App\Models\Invoice;
+use App\Models\InvoiceItem;
+use App\Models\Site;
+use App\Models\Task;
 use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
@@ -80,6 +82,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Relation::enforceMorphMap([
             'user' => User::class,
+            'customer' => Customer::class,
+            'site' => Site::class,
+            'asset' => Asset::class,
+            'task' => Task::class,
+            'invoice' => Invoice::class,
+            'invoice_item' => InvoiceItem::class,
         ]);
     }
 }
